@@ -37,10 +37,10 @@ class Calculator {
     setConstant(constant) {
         switch (constant) {
             case 'e':
-                this.currentOperand = 2.7182818284590452353602874713527
+                this.currentOperand = Math.E
                 break
             case String.fromCharCode(960):
-                this.currentOperand = 3.1415926535897932384626433832795
+                this.currentOperand = Math.PI
             default: return
         }
     }
