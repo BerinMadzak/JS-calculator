@@ -29,6 +29,16 @@ class Calculator {
         if (this.previousOperand !== '') {
             this.compute()
         }
+
+        switch (operation) {
+            case 'xy':
+                operation = '^'
+                break
+            case `y${String.fromCharCode(8730)}x`:
+                operation = 'yroot'
+                break
+        }
+
         this.operation = operation
         this.previousOperand = this.currentOperand
         this.currentOperand = ''
@@ -150,8 +160,15 @@ class Calculator {
             case '/':
                 result = previous / current
                 break
-            case 'sin':
-                result = sin(current)
+            case '^':
+                result = Math.pow(previous, current)
+                break
+            case 'yroot':
+                result = Math.pow(previous, 1 / current)
+                break
+            case 'mod':
+                result = (previous * 100) % (current * 100)
+                result /= 100
                 break
             default: return
         }
